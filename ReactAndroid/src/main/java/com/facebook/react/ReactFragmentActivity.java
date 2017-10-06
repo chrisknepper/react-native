@@ -68,6 +68,12 @@ public abstract class ReactFragmentActivity extends FragmentActivity implements
   }
 
   @Override
+  public void onWindowFocusChanged(boolean hasFocus) {
+    super.onWindowFocusChanged(hasFocus);
+    mDelegate.onWindowFocusChanged(hasFocus);
+  }
+
+  @Override
   protected void onDestroy() {
     super.onDestroy();
     mDelegate.onDestroy();

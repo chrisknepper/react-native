@@ -625,6 +625,13 @@ public class ReactInstanceManager {
     }
   }
 
+  @ThreadConfined(UI)
+  public void onHostWindowFocusChanged(Activity activity, boolean hasFocus) {
+    UiThreadUtil.assertOnUiThread();
+
+    reportWindowFocusChanged(hasFocus);
+  }
+
   /**
    * Destroy this React instance and the attached JS context.
    */
@@ -707,6 +714,12 @@ public class ReactInstanceManager {
   private synchronized void moveReactContextToCurrentLifecycleState() {
     if (mLifecycleState == LifecycleState.RESUMED) {
       moveToResumedLifecycleState(true);
+    }
+  }
+
+  private synchronized void reportWindowFocusChanged(final boolean hasFocus) {
+    if (mCurrentReactContext != null) {
+      mCurrentReactContext.onHostWindowFocusChanged(hasFocus);
     }
   }
 

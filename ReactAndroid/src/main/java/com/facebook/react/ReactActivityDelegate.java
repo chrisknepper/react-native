@@ -133,6 +133,12 @@ public class ReactActivityDelegate {
     }
   }
 
+  public void onWindowFocusChanged(boolean hasFocus) {
+    if (getReactNativeHost().hasInstance()) {
+      getReactNativeHost().getReactInstanceManager().onHostWindowFocusChanged(getPlainActivity(), hasFocus);
+    }
+  }
+
   protected void onDestroy() {
     if (mReactRootView != null) {
       mReactRootView.unmountReactApplication();

@@ -218,6 +218,21 @@ public class ReactContext extends ContextWrapper {
   }
 
   /**
+  * Should be called by the hosting Fragment in {@link Fragment#onPause}
+  */
+  public void onHostWindowFocusChanged(boolean hasFocus) {
+    //ReactMarker.logMarker(ReactMarkerConstants.ON_HOST_PAUSE_START);
+    for (LifecycleEventListener listener : mLifecycleEventListeners) {
+      try {
+        listener.onHostWindowFocusChanged(hasFocus);
+      } catch (RuntimeException e) {
+        handleException(e);
+      }
+    }
+    //ReactMarker.logMarker(ReactMarkerConstants.ON_HOST_PAUSE_END);
+  }
+
+  /**
    * Should be called by the hosting Fragment in {@link Fragment#onDestroy}
    */
   public void onHostDestroy() {

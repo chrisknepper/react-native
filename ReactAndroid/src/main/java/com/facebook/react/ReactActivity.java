@@ -73,6 +73,12 @@ public abstract class ReactActivity extends Activity
   }
 
   @Override
+  public void onWindowFocusChanged(boolean hasFocus) {
+    super.onWindowFocusChanged(hasFocus);
+    mDelegate.onWindowFocusChanged(hasFocus);
+  }
+
+  @Override
   public void onActivityResult(int requestCode, int resultCode, Intent data) {
     mDelegate.onActivityResult(requestCode, resultCode, data);
   }

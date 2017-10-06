@@ -9,6 +9,9 @@
 
 package com.facebook.react.modules.appstate;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.LifecycleEventListener;
@@ -26,6 +29,7 @@ public class AppStateModule extends ReactContextBaseJavaModule
   protected static final String NAME = "AppState";
 
   public static final String APP_STATE_ACTIVE = "active";
+  public static final String APP_STATE_INACTIVE = "inactive";
   public static final String APP_STATE_BACKGROUND = "background";
 
   private String mAppState = "uninitialized";
@@ -59,6 +63,21 @@ public class AppStateModule extends ReactContextBaseJavaModule
   public void onHostPause() {
     mAppState = APP_STATE_BACKGROUND;
     sendAppStateChangeEvent();
+  }
+
+  @Override
+  public void onHostWindowFocusChanged(final boolean hasFocus) {
+    Timer timerObj = new Timer();
+    TimerTask timerTaskObj = new TimerTask() {
+      public void run() {
+        String newAppState = hasFocus ? APP_STATE_ACTIVE : APP_STATE_INACTIVE;
+        if (mAppState != APP_STATE_BACKGROUND && newAppState != mAppState) {
+          mAppState = newAppState;
+          sendAppStateChangeEvent();
+        }
+      }
+    };
+    timerObj.schedule(timerTaskObj, 200);
   }
 
   @Override

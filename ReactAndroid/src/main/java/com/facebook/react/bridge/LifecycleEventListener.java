@@ -46,4 +46,6 @@ public interface LifecycleEventListener {
    * for the last React activity to be destroyed.
    */
   void onHostDestroy();
+
+  void onHostWindowFocusChanged(boolean hasFocus);
 }

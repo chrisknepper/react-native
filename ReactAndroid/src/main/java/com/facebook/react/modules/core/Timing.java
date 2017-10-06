@@ -222,6 +222,10 @@ public final class Timing extends ReactContextBaseJavaModule implements Lifecycl
   }
 
   @Override
+  public void onHostWindowFocusChanged(boolean hasFocus) {
+  }
+
+  @Override
   public void onHostDestroy() {
     clearFrameCallback();
     maybeIdleCallback();

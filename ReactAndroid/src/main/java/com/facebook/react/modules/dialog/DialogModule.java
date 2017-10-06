@@ -199,6 +199,10 @@ public class DialogModule extends ReactContextBaseJavaModule implements Lifecycl
   }
 
   @Override
+  public void onHostWindowFocusChanged(boolean hasFocus) {
+  }
+
+  @Override
   public void onHostDestroy() {
   }
 

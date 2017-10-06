@@ -79,6 +79,10 @@ public class DeviceInfoModule extends BaseJavaModule implements
   }
 
   @Override
+  public void onHostWindowFocusChanged(boolean hasFocus) {
+  }
+
+  @Override
   public void onHostDestroy() {
   }
 

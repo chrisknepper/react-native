@@ -259,6 +259,11 @@ public class ReactWebViewManager extends SimpleViewManager<WebView> {
     }
 
     @Override
+    public void onHostWindowFocusChanged(boolean hasFocus) {
+      // do nothing
+    }
+
+    @Override
     public void onHostDestroy() {
       cleanupCallbacksAndDestroy();
     }

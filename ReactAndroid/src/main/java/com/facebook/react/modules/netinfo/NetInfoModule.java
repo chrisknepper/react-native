@@ -88,6 +88,10 @@ public class NetInfoModule extends ReactContextBaseJavaModule
   }
 
   @Override
+  public void onHostWindowFocusChanged(boolean hasFocus) {
+  }
+
+  @Override
   public void onHostDestroy() {
   }
 

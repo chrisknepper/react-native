@@ -166,6 +166,10 @@ public class EventDispatcher implements LifecycleEventListener {
   }
 
   @Override
+  public void onHostWindowFocusChanged(boolean hasFocus) {
+  }
+
+  @Override
   public void onHostDestroy() {
     stopFrameCallback();
   }

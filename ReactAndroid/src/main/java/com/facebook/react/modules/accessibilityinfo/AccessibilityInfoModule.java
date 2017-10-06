@@ -87,6 +87,10 @@ public class AccessibilityInfoModule extends ReactContextBaseJavaModule
     }
 
     @Override
+    public void onHostWindowFocusChanged(boolean hasFocus) {
+    }
+
+    @Override
     public void initialize() {
         getReactApplicationContext().addLifecycleEventListener(this);
         updateAndSendChangeEvent(mAccessibilityManager.isTouchExplorationEnabled());

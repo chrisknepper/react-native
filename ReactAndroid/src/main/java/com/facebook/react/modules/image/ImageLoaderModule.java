@@ -225,6 +225,10 @@ public class ImageLoaderModule extends ReactContextBaseJavaModule implements
   }
 
   @Override
+  public void onHostWindowFocusChanged(boolean hasFocus) {
+  }
+
+  @Override
   public void onHostDestroy() {
     // cancel all requests
     synchronized (mEnqueuedRequestMonitor) {

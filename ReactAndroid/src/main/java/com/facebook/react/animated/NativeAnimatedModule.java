@@ -165,6 +165,11 @@ public class NativeAnimatedModule extends ReactContextBaseJavaModule implements
   }
 
   @Override
+  public void onHostWindowFocusChanged(boolean hasFocus) {
+    // do nothing
+  }
+
+  @Override
   public void onHostDestroy() {
     // do nothing
   }

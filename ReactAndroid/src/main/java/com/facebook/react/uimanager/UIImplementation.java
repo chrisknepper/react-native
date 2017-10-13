@@ -803,6 +803,9 @@ public class UIImplementation {
   public void onHostDestroy() {
   }
 
+  public void onHostWindowFocusChanged(boolean hasFocus) {
+  }
+
   public void setViewHierarchyUpdateDebugListener(
       @Nullable NotThreadSafeViewHierarchyUpdateDebugListener listener) {
     mOperationsQueue.setViewHierarchyUpdateDebugListener(listener);

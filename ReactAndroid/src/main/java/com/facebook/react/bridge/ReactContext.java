@@ -221,7 +221,8 @@ public class ReactContext extends ContextWrapper {
   * Should be called by the hosting Fragment in {@link Fragment#onPause}
   */
   public void onHostWindowFocusChanged(boolean hasFocus) {
-    //ReactMarker.logMarker(ReactMarkerConstants.ON_HOST_PAUSE_START);
+    UiThreadUtil.assertOnUiThread();
+    ReactMarker.logMarker(ReactMarkerConstants.ON_HOST_WINDOW_FOCUS_CHANGED_START);
     for (LifecycleEventListener listener : mLifecycleEventListeners) {
       try {
         listener.onHostWindowFocusChanged(hasFocus);
@@ -229,7 +230,7 @@ public class ReactContext extends ContextWrapper {
         handleException(e);
       }
     }
-    //ReactMarker.logMarker(ReactMarkerConstants.ON_HOST_PAUSE_END);
+    ReactMarker.logMarker(ReactMarkerConstants.ON_HOST_WINDOW_FOCUS_CHANGED_END);
   }
 
   /**

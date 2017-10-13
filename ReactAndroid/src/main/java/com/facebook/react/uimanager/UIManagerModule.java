@@ -194,6 +194,7 @@ public class UIManagerModule extends ReactContextBaseJavaModule implements
 
   @Override
   public void onHostWindowFocusChanged(boolean hasFocus) {
+    mUIImplementation.onHostWindowFocusChanged(hasFocus);
   }
 
   @Override
